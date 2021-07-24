@@ -25,6 +25,7 @@ namespace TasksApp.Controllers
             return Ok();
         }
 
+        //this is update method
         [HttpPut]
         public IActionResult UpdateTask()
         {
