@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TasksApp.Services;
 
 namespace TasksApp
 {
@@ -32,6 +33,8 @@ namespace TasksApp
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TasksApp", Version = "v1" });
             });
+
+            services.AddScoped<ITodoRepository,TodoServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
