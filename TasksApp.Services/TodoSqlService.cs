@@ -8,7 +8,7 @@ using TasksApp.Models;
 
 namespace TasksApp.Services
 {
-    class TodoSqlService : ITodoRepository
+    public class TodoSqlService : ITodoRepository
     {
         private readonly TodoDBContext _context = new TodoDBContext();
         public List<Todo> AllTodos()

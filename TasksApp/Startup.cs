@@ -34,7 +34,7 @@ namespace TasksApp
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TasksApp by Dinuwan", Version = "v1" });
             });
 
-            services.AddScoped<ITodoRepository,MockTodoServices>();
+              services.AddScoped<ITodoRepository, TodoSqlService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +44,7 @@ namespace TasksApp
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TasksApp v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TasksApp v1")); 
             }
 
             app.UseHttpsRedirection();
