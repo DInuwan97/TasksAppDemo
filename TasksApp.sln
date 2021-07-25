@@ -5,9 +5,11 @@ VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TasksApp", "TasksApp\TasksApp.csproj", "{3B867B1F-1A59-45B9-B3BA-AB0A7B5A061B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksApp.Models", "TasksApp.Models\TasksApp.Models.csproj", "{5694A8E3-59CC-4B99-8004-F70548CEA56A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TasksApp.Models", "TasksApp.Models\TasksApp.Models.csproj", "{5694A8E3-59CC-4B99-8004-F70548CEA56A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksApp.Services", "TasksApp.Services\TasksApp.Services.csproj", "{C1FC286D-3241-454D-825D-80878C62EDA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TasksApp.Services", "TasksApp.Services\TasksApp.Services.csproj", "{C1FC286D-3241-454D-825D-80878C62EDA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TasksApp.DataAccess", "TasksApp.DataAccess\TasksApp.DataAccess.csproj", "{8739510E-4DA0-4F0C-9001-D3F66C25D4A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{C1FC286D-3241-454D-825D-80878C62EDA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1FC286D-3241-454D-825D-80878C62EDA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1FC286D-3241-454D-825D-80878C62EDA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8739510E-4DA0-4F0C-9001-D3F66C25D4A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8739510E-4DA0-4F0C-9001-D3F66C25D4A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8739510E-4DA0-4F0C-9001-D3F66C25D4A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8739510E-4DA0-4F0C-9001-D3F66C25D4A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
