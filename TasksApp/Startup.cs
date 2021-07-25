@@ -31,10 +31,10 @@ namespace TasksApp
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TasksApp", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "TasksApp by Dinuwan", Version = "v1" });
             });
 
-            services.AddScoped<ITodoRepository,TodoServices>();
+            services.AddScoped<ITodoRepository,MockTodoServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,7 +6,7 @@ using TasksApp.Models;
 
 namespace TasksApp.Services
 {
-    public class TodoServices : ITodoRepository
+    public class MockTodoServices : ITodoRepository
     {
         public List<Todo> AllTodos()
         {
