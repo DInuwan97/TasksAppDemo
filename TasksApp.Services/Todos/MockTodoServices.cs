@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TasksApp.Models;
 
-namespace TasksApp.Services
+namespace TasksApp.Services.Todos
 {
     public class MockTodoServices : ITodoRepository
     {
@@ -39,6 +39,9 @@ namespace TasksApp.Services
 
         }
 
-     
+        public Todo GetTodo(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

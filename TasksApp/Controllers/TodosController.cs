@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TasksApp.Services;
+using TasksApp.Services.Todos;
 
 namespace TasksApp.Controllers
 {
@@ -19,14 +19,18 @@ namespace TasksApp.Controllers
             _todoService = repository;
         }
 
-        [HttpGet("{id?}")]
-        public IActionResult GetTodos(int ? id)
+        [HttpGet]
+        public IActionResult GetTodos()
         {
+            var todos = _todoService.AllTodos();
+            return Ok(todos);
+        }
 
-            var myTodos = _todoService.AllTodos();
-            if (id == null) return Ok(myTodos);
-
-            myTodos = _todoService.AllTodos().Where(t => t.Id == id).ToList();
+        [HttpGet("{id}")]
+        public IActionResult GetTodo(int id)
+        {
+            var myTodos = _todoService.GetTodo(id);
+            if (myTodos == null) return NotFound();
             return Ok(myTodos);
         }
 
