@@ -42,8 +42,9 @@ namespace TasksApp.Controllers
         public IActionResult GetAuthor(int id)
         {
             var author = _repository.GetAuthor(id);
-            if (author == null) return NotFound();
-            return Ok(author);
+            var mappedAuthor = _mapper.Map<AuthorDto>(author);
+            if (mappedAuthor == null) return NotFound();
+            return Ok(mappedAuthor);
         }
     }
 }

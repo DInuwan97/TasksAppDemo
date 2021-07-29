@@ -8,7 +8,7 @@ namespace TasksApp.Services.Todos
 {
     public class MockTodoServices : ITodoRepository
     {
-        public List<Todo> AllTodos()
+        public List<Todo> AllTodos(int authorId)
         {
 
             var todos = new List<Todo>();

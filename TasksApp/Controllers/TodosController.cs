@@ -8,7 +8,7 @@ using TasksApp.Services.Todos;
 
 namespace TasksApp.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/authors/{authorId}/todos")]
     [ApiController]
     public class TodosController : ControllerBase
     {
@@ -20,9 +20,9 @@ namespace TasksApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetTodos()
+        public IActionResult GetTodos(int authorId)
         {
-            var todos = _todoService.AllTodos();
+            var todos = _todoService.AllTodos(authorId);
             return Ok(todos);
         }
 

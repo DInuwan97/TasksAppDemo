@@ -14,7 +14,7 @@ namespace TasksApp.Services.Profiles
         public AuthorProfile()
         {
             CreateMap<Author, AuthorDto>()
-                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => $"{src.AddresNo}, {src.City}, {src.Street}"));
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => $"{src.AddresNo}, {src.City}, {src.Street}")); 
         }
     }
 }

@@ -11,9 +11,9 @@ namespace TasksApp.Services.Todos
     public class TodoSqlService : ITodoRepository
     {
         private readonly TodoDBContext _context = new TodoDBContext();
-        public List<Todo> AllTodos()
+        public List<Todo> AllTodos(int authorId)
         {
-            return _context.Todos.ToList();
+            return _context.Todos.Where(todo => todo.AuthorId == authorId).ToList();
         }
 
         public Todo GetTodo(int id)
