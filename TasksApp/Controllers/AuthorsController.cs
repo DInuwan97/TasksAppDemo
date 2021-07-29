@@ -21,10 +21,10 @@ namespace TasksApp.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public ActionResult<ICollection<AuthorDto>> GetAuthors()
+        public ActionResult<ICollection<AuthorDto>> GetAuthors([FromQuery]string job,String search)
         {
            // throw new Exception("Test Error");
-            var authors = _repository.GetAllAuthors();
+            var authors = _repository.GetAuthors(job,search);
             var mappedAuthors = _mapper.Map<ICollection<AuthorDto>>(authors);
             // var authorsDto = new List<AuthorDto>();
             /*  foreach(var author in authors)

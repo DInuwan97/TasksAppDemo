@@ -10,6 +10,7 @@ namespace TasksApp.Services.Authors
     public interface IAuthorRepository
     {
         public List<Author> GetAllAuthors();
+        public List<Author> GetAuthors(String job, String search);
         public Author GetAuthor(int id);
     }
 }
