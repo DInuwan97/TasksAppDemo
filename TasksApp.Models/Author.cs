@@ -20,6 +20,8 @@ namespace TasksApp.Models
         [Required]
         [MaxLength(50)]
         public String City { get; set; }
+        [MaxLength(50)]
+        public String JobRole { get; set; }
         public ICollection<Todo> Todos { get; set; }
     }
 }
