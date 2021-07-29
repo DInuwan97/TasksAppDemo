@@ -31,13 +31,15 @@ namespace TasksApp
 
             services.AddControllers(options =>
             {
-                options.ReturnHttpNotAcceptable = true;
-            }).AddXmlDataContractSerializerFormatters() ;
+                options.ReturnHttpNotAcceptable = false;
+            });
+             //.AddXmlDataContractSerializerFormatters() ;
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TasksApp by Dinuwan", Version = "v1" });
             });
 
+              services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
               services.AddScoped<ITodoRepository, TodoSqlService>();
               services.AddScoped<IAuthorRepository, AuthorSqlServerService>();
         }

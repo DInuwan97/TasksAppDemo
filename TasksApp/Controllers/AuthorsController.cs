@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,26 +14,29 @@ namespace TasksApp.Controllers
     public class AuthorsController : ControllerBase
     {
         private readonly IAuthorRepository _repository;
-        public AuthorsController(IAuthorRepository repository)
+        private readonly IMapper _mapper;
+        public AuthorsController(IAuthorRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
         [HttpGet]
         public ActionResult<ICollection<AuthorDto>> GetAuthors()
         {
             var authors = _repository.GetAllAuthors();
-            var authorsDto = new List<AuthorDto>();
-
-            foreach(var author in authors)
-            {
-                authorsDto.Add(new AuthorDto
-                {
-                    Id = author.Id,
-                    FullName = author.FullName,
-                    Address = $"{author.AddresNo}, {author.City}, {author.Street}"
-                });
-            }
-            return Ok(authorsDto);
+            var mappedAuthors = _mapper.Map<ICollection<AuthorDto>>(authors);
+            // var authorsDto = new List<AuthorDto>();
+            /*  foreach(var author in authors)
+              {
+                  authorsDto.Add(new AuthorDto
+                  {
+                      Id = author.Id,
+                      FullName = author.FullName,
+                      Address = $"{author.AddresNo}, {author.City}, {author.Street}"
+                  });
+              }
+            */
+            return Ok(mappedAuthors);
         }
         [HttpGet("{id}")]
         public IActionResult GetAuthor(int id)
