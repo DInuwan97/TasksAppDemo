@@ -16,9 +16,9 @@ namespace TasksApp.Services.Todos
             return _context.Todos.Where(todo => todo.AuthorId == authorId).ToList();
         }
 
-        public Todo GetTodo(int id)
+        public Todo GetTodo(int authorId,int id)
         {
-            return _context.Todos.Find(id);
+            return _context.Todos.FirstOrDefault(todo => todo.AuthorId == authorId && todo.Id == id);
         }
     }
 }

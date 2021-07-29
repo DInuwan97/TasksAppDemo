@@ -39,7 +39,7 @@ namespace TasksApp.Services.Todos
 
         }
 
-        public Todo GetTodo(int id)
+        public Todo GetTodo(int authorId,int id)
         {
             throw new NotImplementedException();
         }

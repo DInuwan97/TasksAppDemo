@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TasksApp.Services.Todos;
 using TasksApp.Services.Authors;
+using Microsoft.AspNetCore.Http;
 
 namespace TasksApp
 {
@@ -52,6 +53,16 @@ namespace TasksApp
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TasksApp v1")); 
+            }
+            else
+            {
+                app.UseExceptionHandler(app =>
+                {
+                    app.Run(async context => {
+                        context.Response.StatusCode = 500;
+                        await context.Response.WriteAsync("There was an error in the server. Please contact Developer");
+                    });
+                });
             }
 
             app.UseHttpsRedirection();

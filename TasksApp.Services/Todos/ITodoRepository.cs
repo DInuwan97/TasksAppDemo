@@ -11,6 +11,6 @@ namespace TasksApp.Services.Todos
     {
         public List<Todo> AllTodos(int authorId);
 
-        public Todo GetTodo(int id);
+        public Todo GetTodo(int authorId,int id);
     }
 }

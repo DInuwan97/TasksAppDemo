@@ -23,6 +23,7 @@ namespace TasksApp.Controllers
         [HttpGet]
         public ActionResult<ICollection<AuthorDto>> GetAuthors()
         {
+           // throw new Exception("Test Error");
             var authors = _repository.GetAllAuthors();
             var mappedAuthors = _mapper.Map<ICollection<AuthorDto>>(authors);
             // var authorsDto = new List<AuthorDto>();
@@ -39,7 +40,7 @@ namespace TasksApp.Controllers
             return Ok(mappedAuthors);
         }
         [HttpGet("{id}")]
-        public IActionResult GetAuthor(int id)
+        public ActionResult<AuthorDto> GetAuthor(int id)
         {
             var author = _repository.GetAuthor(id);
             var mappedAuthor = _mapper.Map<AuthorDto>(author);
