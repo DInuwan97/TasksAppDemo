@@ -12,5 +12,6 @@ namespace TasksApp.Services.Authors
         public List<Author> GetAllAuthors();
         public List<Author> GetAuthors(String job, String search);
         public Author GetAuthor(int id);
+        public Author AddAuthor(Author author);
     }
 }
