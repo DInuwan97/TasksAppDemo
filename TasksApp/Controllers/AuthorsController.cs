@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TasksApp.Services.Authors;
+using TasksApp.Services.DTOs;
 namespace TasksApp.Controllers
 {
     [Route("api/authors")]
@@ -17,10 +18,21 @@ namespace TasksApp.Controllers
             _repository = repository;
         }
         [HttpGet]
-        public IActionResult GetAuthors()
+        public ActionResult<ICollection<AuthorDto>> GetAuthors()
         {
             var authors = _repository.GetAllAuthors();
-            return Ok(authors);
+            var authorsDto = new List<AuthorDto>();
+
+            foreach(var author in authors)
+            {
+                authorsDto.Add(new AuthorDto
+                {
+                    Id = author.Id,
+                    FullName = author.FullName,
+                    Address = $"{author.AddresNo}, {author.City}, {author.Street}"
+                });
+            }
+            return Ok(authorsDto);
         }
         [HttpGet("{id}")]
         public IActionResult GetAuthor(int id)
