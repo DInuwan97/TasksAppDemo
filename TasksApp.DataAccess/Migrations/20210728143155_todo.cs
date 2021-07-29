@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TasksApp.DataAccess.Migrations
 {
-    public partial class AuthorEntity : Migration
+    public partial class todo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,10 @@ namespace TasksApp.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    FullName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    AddresNo = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
+                    Street = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
+                    City = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,8 +29,8 @@ namespace TasksApp.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Due = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
@@ -46,29 +49,29 @@ namespace TasksApp.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "Authors",
-                columns: new[] { "Id", "FullName" },
+                columns: new[] { "Id", "AddresNo", "City", "FullName", "Street" },
                 values: new object[,]
                 {
-                    { 1, "Dinuwan Kalubowila" },
-                    { 2, "Dureksha Wasala" },
-                    { 3, "Chod Perera" },
-                    { 4, "Chamika Visal" }
+                    { 1, "45", "Colombo 1", "Dinuwan Kalubowila", "Street 1" },
+                    { 2, "35", "Colombo 2", "Dureksha Wasala", "Street 2" },
+                    { 3, "25", "Colombo 3", "Chod Perera", "Street 3" },
+                    { 4, "15", "Colombo 4", "Chamika Visal", "Street 4" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Todos",
                 columns: new[] { "Id", "AuthorId", "Created", "Description", "Due", "Status", "Title" },
-                values: new object[] { 1, 1, new DateTime(2021, 7, 25, 15, 58, 54, 451, DateTimeKind.Local).AddTicks(8903), "Get books for school from DB", new DateTime(2021, 7, 30, 15, 58, 54, 453, DateTimeKind.Local).AddTicks(1173), 0, "Get Books" });
+                values: new object[] { 1, 1, new DateTime(2021, 7, 28, 20, 1, 55, 196, DateTimeKind.Local).AddTicks(7786), "Get books for school from DB", new DateTime(2021, 8, 2, 20, 1, 55, 197, DateTimeKind.Local).AddTicks(9619), 0, "Get Books" });
 
             migrationBuilder.InsertData(
                 table: "Todos",
                 columns: new[] { "Id", "AuthorId", "Created", "Description", "Due", "Status", "Title" },
-                values: new object[] { 2, 2, new DateTime(2021, 7, 25, 15, 58, 54, 453, DateTimeKind.Local).AddTicks(2315), "Get Medicine for sickness", new DateTime(2021, 7, 27, 15, 58, 54, 453, DateTimeKind.Local).AddTicks(2322), 1, "Get Medicine" });
+                values: new object[] { 2, 2, new DateTime(2021, 7, 28, 20, 1, 55, 198, DateTimeKind.Local).AddTicks(1281), "Get Medicine for sickness", new DateTime(2021, 7, 30, 20, 1, 55, 198, DateTimeKind.Local).AddTicks(1288), 1, "Get Medicine" });
 
             migrationBuilder.InsertData(
                 table: "Todos",
                 columns: new[] { "Id", "AuthorId", "Created", "Description", "Due", "Status", "Title" },
-                values: new object[] { 3, 2, new DateTime(2021, 7, 25, 15, 58, 54, 453, DateTimeKind.Local).AddTicks(2331), "Get Foods from Resrurant", new DateTime(2021, 7, 28, 15, 58, 54, 453, DateTimeKind.Local).AddTicks(2332), 1, "Get Foods" });
+                values: new object[] { 3, 2, new DateTime(2021, 7, 28, 20, 1, 55, 198, DateTimeKind.Local).AddTicks(1297), "Get Foods from Resrurant", new DateTime(2021, 7, 31, 20, 1, 55, 198, DateTimeKind.Local).AddTicks(1298), 1, "Get Foods" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Todos_AuthorId",

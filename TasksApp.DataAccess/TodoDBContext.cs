@@ -21,10 +21,10 @@ namespace TasksApp.DataAccess
 
             modelBuilder.Entity<Author>().HasData(new Author[]{
 
-                new Author { Id=1,FullName="Dinuwan Kalubowila"},
-                new Author { Id=2,FullName="Dureksha Wasala"},
-                new Author { Id=3,FullName="Chod Perera"},
-                new Author { Id=4,FullName="Chamika Visal"},
+                new Author { Id=1,FullName="Dinuwan Kalubowila",AddresNo = "45", Street = "Street 1", City="Colombo 1"},
+                new Author { Id=2,FullName="Dureksha Wasala", AddresNo = "35", Street = "Street 2", City="Colombo 2"},
+                new Author { Id=3,FullName="Chod Perera", AddresNo = "25", Street = "Street 3", City="Colombo 3"},
+                new Author { Id=4,FullName="Chamika Visal", AddresNo = "15", Street = "Street 4", City="Colombo 4" },
             });
 
             modelBuilder.Entity<Todo>().HasData(new Todo[]

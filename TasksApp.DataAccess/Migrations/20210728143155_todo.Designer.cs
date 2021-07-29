@@ -10,8 +10,8 @@ using TasksApp.DataAccess;
 namespace TasksApp.DataAccess.Migrations
 {
     [DbContext(typeof(TodoDBContext))]
-    [Migration("20210725102854_AuthorEntity")]
-    partial class AuthorEntity
+    [Migration("20210728143155_todo")]
+    partial class todo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,8 +28,23 @@ namespace TasksApp.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("AddresNo")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("FullName")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Street")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
@@ -39,22 +54,34 @@ namespace TasksApp.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            FullName = "Dinuwan Kalubowila"
+                            AddresNo = "45",
+                            City = "Colombo 1",
+                            FullName = "Dinuwan Kalubowila",
+                            Street = "Street 1"
                         },
                         new
                         {
                             Id = 2,
-                            FullName = "Dureksha Wasala"
+                            AddresNo = "35",
+                            City = "Colombo 2",
+                            FullName = "Dureksha Wasala",
+                            Street = "Street 2"
                         },
                         new
                         {
                             Id = 3,
-                            FullName = "Chod Perera"
+                            AddresNo = "25",
+                            City = "Colombo 3",
+                            FullName = "Chod Perera",
+                            Street = "Street 3"
                         },
                         new
                         {
                             Id = 4,
-                            FullName = "Chamika Visal"
+                            AddresNo = "15",
+                            City = "Colombo 4",
+                            FullName = "Chamika Visal",
+                            Street = "Street 4"
                         });
                 });
 
@@ -72,7 +99,8 @@ namespace TasksApp.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<DateTime>("Due")
                         .HasColumnType("datetime2");
@@ -81,7 +109,9 @@ namespace TasksApp.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
 
                     b.HasKey("Id");
 
@@ -94,9 +124,9 @@ namespace TasksApp.DataAccess.Migrations
                         {
                             Id = 1,
                             AuthorId = 1,
-                            Created = new DateTime(2021, 7, 25, 15, 58, 54, 451, DateTimeKind.Local).AddTicks(8903),
+                            Created = new DateTime(2021, 7, 28, 20, 1, 55, 196, DateTimeKind.Local).AddTicks(7786),
                             Description = "Get books for school from DB",
-                            Due = new DateTime(2021, 7, 30, 15, 58, 54, 453, DateTimeKind.Local).AddTicks(1173),
+                            Due = new DateTime(2021, 8, 2, 20, 1, 55, 197, DateTimeKind.Local).AddTicks(9619),
                             Status = 0,
                             Title = "Get Books"
                         },
@@ -104,9 +134,9 @@ namespace TasksApp.DataAccess.Migrations
                         {
                             Id = 2,
                             AuthorId = 2,
-                            Created = new DateTime(2021, 7, 25, 15, 58, 54, 453, DateTimeKind.Local).AddTicks(2315),
+                            Created = new DateTime(2021, 7, 28, 20, 1, 55, 198, DateTimeKind.Local).AddTicks(1281),
                             Description = "Get Medicine for sickness",
-                            Due = new DateTime(2021, 7, 27, 15, 58, 54, 453, DateTimeKind.Local).AddTicks(2322),
+                            Due = new DateTime(2021, 7, 30, 20, 1, 55, 198, DateTimeKind.Local).AddTicks(1288),
                             Status = 1,
                             Title = "Get Medicine"
                         },
@@ -114,9 +144,9 @@ namespace TasksApp.DataAccess.Migrations
                         {
                             Id = 3,
                             AuthorId = 2,
-                            Created = new DateTime(2021, 7, 25, 15, 58, 54, 453, DateTimeKind.Local).AddTicks(2331),
+                            Created = new DateTime(2021, 7, 28, 20, 1, 55, 198, DateTimeKind.Local).AddTicks(1297),
                             Description = "Get Foods from Resrurant",
-                            Due = new DateTime(2021, 7, 28, 15, 58, 54, 453, DateTimeKind.Local).AddTicks(2332),
+                            Due = new DateTime(2021, 7, 31, 20, 1, 55, 198, DateTimeKind.Local).AddTicks(1298),
                             Status = 1,
                             Title = "Get Foods"
                         });
@@ -125,12 +155,17 @@ namespace TasksApp.DataAccess.Migrations
             modelBuilder.Entity("TasksApp.Models.Todo", b =>
                 {
                     b.HasOne("TasksApp.Models.Author", "Author")
-                        .WithMany()
+                        .WithMany("Todos")
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Author");
+                });
+
+            modelBuilder.Entity("TasksApp.Models.Author", b =>
+                {
+                    b.Navigation("Todos");
                 });
 #pragma warning restore 612, 618
         }

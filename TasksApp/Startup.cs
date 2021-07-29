@@ -29,7 +29,10 @@ namespace TasksApp
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.ReturnHttpNotAcceptable = true;
+            }).AddXmlDataContractSerializerFormatters() ;
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TasksApp by Dinuwan", Version = "v1" });
