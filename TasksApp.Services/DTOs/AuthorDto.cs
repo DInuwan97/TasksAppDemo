@@ -12,6 +12,7 @@ namespace TasksApp.Services.DTOs
         public String FullName { get; set; }
         public String Address { get; set; }
         public String JobRole { get; set; }
+        public ICollection<TodosDto> Todos { get; set; }
 
     }
 }

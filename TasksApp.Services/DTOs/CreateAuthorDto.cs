@@ -13,5 +13,6 @@ namespace TasksApp.Services.DTOs
         public String Street { get; set; }
         public String City { get; set; }
         public String JobRole { get; set; }
+        public ICollection<CreateTodoDto> Todos { get; set; } = new List<CreateTodoDto>();
     }
 }

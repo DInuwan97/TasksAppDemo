@@ -20,5 +20,14 @@ namespace TasksApp.Services.Todos
         {
             return _context.Todos.FirstOrDefault(todo => todo.AuthorId == authorId && todo.Id == id);
         }
+
+        public Todo AddTodo(int authorId,Todo todo)
+        {
+            todo.AuthorId = authorId;
+            _context.Todos.Add(todo);
+            _context.SaveChanges();
+
+            return _context.Todos.Find(todo.Id);
+        }
     }
 }

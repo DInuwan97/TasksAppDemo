@@ -14,6 +14,7 @@ namespace TasksApp.Services.Profiles
         public TodosProfile()
         {
             CreateMap<Todo, TodosDto>();
+            CreateMap<CreateTodoDto,Todo>();
         }
     }
 }
